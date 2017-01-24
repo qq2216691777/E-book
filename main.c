@@ -4,6 +4,7 @@
 #include "file.h"
 #include "page.h"
 
+
 /***********************************************
 *	function name: judge_file_type
 *	function destion: Determinie whether the file suffix is the same
@@ -27,14 +28,9 @@ bool judge_file_type( char const *filename, char *cmp_name )
 	return true;
 }
 
-wchar_t	*chinese_chars = L"中（中中z";
-wchar_t	*chinese_chars2 = L"1234567890abcdefghijk \
-直到，一头栽进陆时云的怀里，望进他眼底春意绵绵你全部的真实。";
 int main(int argc, char const *argv[])
 {
-	int ret;
-	int fd;
-	short	*pp;
+
 	char ch;
 
 	if( argc != 3 )
@@ -58,13 +54,13 @@ int main(int argc, char const *argv[])
 	g_fb.Devie_Init();
 	g_fb.cleanscreen(0xffffff);
 
-	if(g_txt.Init(argv[2]))
+	if(g_txt.Init( argv[2]) )
 	{
-		DEBUG_PRINT("error:TXT init failed\n",argv[1]);
+		DEBUG_PRINT("error:TXT init failed\n");
 		return -1;
 	}
 
-	g_freetype.Init(argv[1]);
+	g_freetype.Init( argv[1] );
 
 	g_freetype.size=24;
 

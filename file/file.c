@@ -1,7 +1,7 @@
 #include "file.h"
 #include "main.h"
 
-static int file_Init( char *filename );
+static int file_Init( const char *filename );
 
 
 file_t g_txt={
@@ -14,13 +14,13 @@ file_t g_txt={
 			&file_Init,
 		};
 
-static int file_Init( char *filename )
+static int file_Init( const char *filename )
 {
 	FILE *fd;
 	int iFd;
 	struct stat tStat;
 
-	g_txt.filename = filename;
+	g_txt.filename = (char *)filename;
 	fd = fopen(filename, "r+");
 	if (fd == NULL)
 	{

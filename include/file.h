@@ -14,7 +14,7 @@ typedef struct
 	int type;
 	int head;
 	unsigned char *fmem;
-	int (*Init)( char *filename );
+	int (*Init)( const char *filename );
 }file_t;
 
 extern file_t g_txt;

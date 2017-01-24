@@ -11,10 +11,11 @@ typedef struct $
 	char font_name[32];
 	float angle;
 	int size;
-	int (*Init)( char *);
+	int (*Init)( const char *);
 	void (*put_char)( int ,int ,int *);
 	int (*put_string)( int ,int ,int *);
-	int* (*show_page)( short* pf );
+	short* (*show_page)( short* pf );
+	void (*destroy)(void);
 }ft_t;
 
 

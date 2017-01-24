@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <linux/fb.h>
 #include <stdlib.h>
+#include <sys/ioctl.h>
 
 
 #include "fb.h"
@@ -107,7 +108,7 @@ static void lcd_draw_font_bitmap( int x, int y, int width, int hight, unsigned c
 {
 	unsigned char *pen_8 = g_fb.fbmem;
 	unsigned short *pen_16 = (unsigned short *)pen_8;
-	unsigned short *pen_32 = (unsigned short *)pen_8;
+	//unsigned short *pen_32 = (unsigned short *)pen_8;
 	unsigned char red,blue,green;
 	unsigned int color;
 	unsigned char *buffer8 = (unsigned char *)buffer;

@@ -1,7 +1,8 @@
 #include "page.h"
 #include "freetype.h"
 
-static void Page_Init( char *fmem, int size );
+
+static void Page_Init( unsigned char *fmem, int size );
 static void Page_Show( void );
 static void Page_Show_next( void );
 static void Page_Show_pre( void );
@@ -18,7 +19,7 @@ page_t g_page = {
 			&Page_Show_next,
 			&Page_Show_pre,
 };
-static void Page_Init( char *fmem, int size )
+static void Page_Init( unsigned char *fmem, int size )
 {
 	g_page.fp = fmem;
 	g_page.nfp = fmem;
@@ -42,7 +43,7 @@ static void Page_Show( void )
 		g_page.page->next->next = NULL;
 		g_page.page->next->num = g_page.page->num+1;
 	}
-	g_page.page->next->fp = g_freetype.show_page( g_page.page->fp );
+	g_page.page->next->fp = (unsigned char*)g_freetype.show_page( (short*)g_page.page->fp );
 
 }
 
@@ -57,7 +58,7 @@ static void Page_Show_next( void )
 		g_page.page->next->next = NULL;
 		g_page.page->next->num = g_page.page->num+1;
 	}
-	g_page.page->next->fp = g_freetype.show_page( g_page.page->fp );
+	g_page.page->next->fp = (char*)g_freetype.show_page( (short*)g_page.page->fp );
 
 }
 
@@ -66,7 +67,7 @@ static void Page_Show_pre( void )
 	if( g_page.page->pre != NULL )
 	{
 		g_page.page = g_page.page->pre;
-		g_freetype.show_page( g_page.page->fp );
+		g_freetype.show_page( (short*)g_page.page->fp );
 	}
 
 }

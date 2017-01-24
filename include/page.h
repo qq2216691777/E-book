@@ -4,7 +4,7 @@
 
 struct  Link_Page
 {
-	char* fp;
+	unsigned char* fp;
 	int num;
 	struct  Link_Page *next;
 	struct  Link_Page *pre;
@@ -14,10 +14,10 @@ typedef struct
 {
 	int num;
 	int screen_size;
-	char* fp;
-	char* nfp;
+	unsigned char* fp;
+	unsigned char* nfp;
 	struct  Link_Page* page;
-	void (*Init)( char *, int );
+	void (*Init)( unsigned char *, int );
 	void (*Show)( void );
 	void (*Show_next)( void );
 	void (*Show_pre)( void );

@@ -2,10 +2,11 @@
 #include "fb.h"
 #include <freetype/ftglyph.h>
 
-static int freetype_Init( char *font_file );
+static int freetype_Init( const char *font_file );
 static void freetype_put_char( int x, int y, int *c );
 static int freetype_put_string( int x, int y, int* c );
-static int* freetype_show_page( short* pf );
+static short* freetype_show_page( short* pf );
+static void freetype_destroy(void);
 
 ft_t g_freetype={
 			"12",
@@ -15,15 +16,16 @@ ft_t g_freetype={
       &freetype_put_char,
       &freetype_put_string,
       &freetype_show_page,
+      &freetype_destroy,
 };
 
 
 
-FT_Library    library;
+FT_Library  library;
 FT_Face face;
 FT_Vector  pen;
 
-static int freetype_Init( char *font_file )
+static int freetype_Init( const char *font_file )
 {
 	FT_Error	  error;
 
@@ -105,7 +107,7 @@ static int freetype_put_string( int x, int y, int* c )
   return font_num;
 }
 
-static int *freetype_show_page( short* pf )
+static short *freetype_show_page( short* pf )
 {
 
   FT_Error      error;
