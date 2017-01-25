@@ -19,7 +19,7 @@ export STRIP OBJDUMP OBJCOPY
 
 CFLAGS			:=	-Wall -o2
 CFLAGS			+=	-I $(shell pwd)/include
-LDFLAGS			:=	-lm	-lfreetype
+LDFLAGS			:=	-lm	-lfreetype -lts
 
 export CFLAGS LDFLAGS
 
@@ -33,6 +33,7 @@ obj-y	+= fb/
 obj-y	+= freetype/
 obj-y	+= file/
 obj-y	+= page/
+obj-y	+= input/
 
 all:
 	make -C ./  -f $(TOPDIR)/Makefile.build

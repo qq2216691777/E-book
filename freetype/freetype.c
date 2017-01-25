@@ -30,7 +30,7 @@ static int freetype_Init( const char *font_file )
 	FT_Error	  error;
 
   g_freetype.angle = 0;
-  g_freetype.size = 50;
+  g_freetype.size = 16;
 
 	error = FT_Init_FreeType( &library );
 
